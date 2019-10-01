@@ -49,9 +49,9 @@ public class CommentController {
     @PostMapping(value = "/comments/add",produces = "application/json")
     public Comment createComment(@PathVariable (value = "postId") Long postId,
                                  @Valid @RequestBody Comment comment) {
-    	 Post findPost=postRepository.findByid(postId);
-    	 UserDao userdoa= postController.getUserName(); 	     	 
-    	 List list= postRepository.findByuser(postController.getUserName());
+    	 //Post findPost=postRepository.findByid(postId);
+    	 //UserDao userdoa= postController.getUserName(); 	     	 
+    	 List<Post> list= postRepository.findByuser(postController.getUserName());
     		ArrayList<Post> items = new ArrayList<Post>();
     				items.addAll(list);
     				 boolean valid=items.contains(postId);

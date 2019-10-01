@@ -25,24 +25,17 @@ public class JwtTokenUtil implements Serializable {
 	
 	//retrive username from jwt token
 	public String getUsernameFromToken(String token) { 
-		System.err.println(" JwtTokenUtil getUsernameFromToken before token: "+token);
 		String usernameToken= getClaimFromToken(token,Claims::getSubject);
-		System.out.println(" JwtTokenUtil getUsernameFromToken After token: "+usernameToken);
 		return usernameToken;
 	}
     //retrive expiration date from jwt token
 	 public Date getExpirationDatefromToken(String token) {
-			System.err.println(" JwtTokenUtil getExpirationDatefromToken token: "+token);
 			Date dataformateToken= getClaimFromToken(token, Claims::getExpiration);
-			System.err.println(" JwtTokenUtil getExpirationDatefromToken token: "+dataformateToken);
           return dataformateToken;
 	 }
 	
 	private <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-		System.out.println(" JwtTokenUtil getClaimFromToken token: "+token);
-		System.err.println(" JwtTokenUtil getClaimFromToken token: "+claimsResolver);
 		final Claims claims=getAllClaimsfromToken(token);
-		System.err.println(" JwtTokenUtil getClaimFromToken after token: "+claims);
 		return claimsResolver.apply(claims);
 	}
 	//for retrieveing any information from token we will need the secret key
